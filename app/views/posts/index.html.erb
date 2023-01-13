@@ -1,0 +1,74 @@
+<h1>Posts</h1>
+
+<%= link_to 'New Post', new_post_path %>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.name %></td>
+        <button class="dislike">
+          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </button>
+        <button class="like">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+        </button>
+        <td><%= render "posts/votes_score", post: post %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<style>
+button.like{
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: rgba(0,150,136 ,1);
+  background-color:rgba(38,166,154 ,0.3);
+  border-color: rgba(0,150,136 ,1);
+  border-width: 1px;
+  font-size: 15px;
+}
+
+button.dislike{
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: rgba(255,82,82 ,1);
+  background-color: rgba(255,138,128 ,0.3);
+  border-color: rgba(255,82,82 ,1);
+  border-width: 1px;
+  font-size: 15px;
+}
+
+button.learnmore{
+  width: 5%;
+  padding: 10px;
+  border: none;
+  background: rgba(0,151,167 ,1);
+  border-ra
+dius: 5px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+<style>
